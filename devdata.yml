@@ -1,0 +1,25 @@
+---
+- name: R1
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
+- name: R2
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
+- name: R3
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
+- name: R4
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
+- name: R5
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
+- name: R6
+  ipv4_address: CHANGE_IP_ADDRESS
+  ipv4_mask: CHANGE_SUBNET
+  is_a_router: true
