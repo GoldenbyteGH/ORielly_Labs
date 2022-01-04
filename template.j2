@@ -1,11 +1,24 @@
-{% for interface in interface_list %}
-interface {{interface.name}}
-description {{interface.desc|upper }}
-{% if interface.uplink %}
-switchport mode trunk
+{% for device in device_list %}
+############################### Configurazione {{device.name}} #############################
+en
+configure terminal
+enable secret cisco
+crypto key generate rsa modulus 1024
+username cisco secret cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+hostname {{device.name}}
+{% if device.is_a_router %}
+interface GigabitEthernet0/0
+ip address dhcp
 {%else%}
-switchport access vlan {{interface.vlan}}
-swicthport mode access
+interface GigabitEthernet0/1
+no switchport
+ip address dhcp
 {%endif%}
-
+no shutdown
+end
+copy running-config startup-config
 {%endfor%}
