@@ -2,8 +2,10 @@
 ############################### Configurazione {{device.name}} #############################
 en
 configure terminal
+hostname {{device.name}}
+ip domain-name {{env_data.domain_name}}
 snmp-server community {{env_data.snmpv2c_string}}
-snmp-server host 172.16.90.78 {{env_data.snmpv2c_string}}
+snmp-server host {{env_data.snmp_srv}} {{env_data.snmpv2c_string}}
 enable secret {{env_data.password}}
 crypto key generate rsa modulus 1024
 username {{env_data.username}} secret {{env_data.password}}
@@ -11,7 +13,6 @@ ip ssh version 2
 line vty 0 15
 transport input ssh
 login local
-hostname {{device.name}}
 {% if device.is_a_router %}
 interface GigabitEthernet0/0
 {%else%}
@@ -22,4 +23,6 @@ ip address {{device.ipv4_address}} {{device.ipv4_mask}}
 no shutdown
 end
 copy running-config startup-config
+
+!
 {%endfor%}
