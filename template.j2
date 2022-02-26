@@ -13,6 +13,10 @@ ip ssh version 2
 line vty 0 15
 transport input ssh
 login local
+{% if device.lo0 %}
+interface loopback 0
+ip address {{device.lo0}} 255.255.255.255
+{%endif%}
 {% if device.is_a_router %}
 interface GigabitEthernet0/0
 {%else%}
