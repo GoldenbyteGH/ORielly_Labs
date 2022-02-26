@@ -1,4 +1,6 @@
 ---
-snmpv2c_string: My_Snmpv2c_String
-username: admin
-password: cisco
+snmp_srv: SNMP_SRV
+domain_name: MYDOMAINNAME.NET
+snmpv2c_string: SNMP_CSTRING
+username: USERNAME
+password: PASSWORD
