@@ -17,4 +17,6 @@ if __name__ == "__main__":
         f_conf.writelines(line)
 
     f_conf.close()
+    f_env.close()
+    f_dev.close()
 
