@@ -2,9 +2,11 @@
 ############################### Configurazione {{device.name}} #############################
 en
 configure terminal
-enable secret cisco
+snmp-server community {{env_data.snmpv2c_string}}
+snmp-server host 172.16.90.78 {{env_data.snmpv2c_string}}
+enable secret {{env_data.password}}
 crypto key generate rsa modulus 1024
-username cisco secret cisco
+username {{env_data.username}} secret {{env_data.password}}
 ip ssh version 2
 line vty 0 15
 transport input ssh
@@ -12,11 +14,11 @@ login local
 hostname {{device.name}}
 {% if device.is_a_router %}
 interface GigabitEthernet0/0
-ip address dhcp
+ip address {{device.ipv4_address}} {{device.ipv4_mask}}
 {%else%}
 interface GigabitEthernet0/1
 no switchport
-ip address dhcp
+ip address {{device.ipv4_address}} {{device.ipv4_mask}}
 {%endif%}
 no shutdown
 end
